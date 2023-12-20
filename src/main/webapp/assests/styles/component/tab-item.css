@@ -1,0 +1,30 @@
+.tab-item {
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+  padding: 11px 37px;
+  display: flex;
+  align-items: center;
+  column-gap: 17px;
+  color: #807d7e;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+.tab-item:hover {
+  background: #f6f6f6;
+}
+.tab-item--active {
+  background: #f6f6f6;
+  position: relative;
+}
+.tab-item--active::before {
+  position: absolute;
+  content: "";
+  display: block;
+  background: #3c4242;
+  width: 2px;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
