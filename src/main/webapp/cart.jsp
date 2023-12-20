@@ -32,7 +32,8 @@
                 <input type="text" class="header-search__box field" placeholder="Tìm kiếm">
             </form>
             <div class="header-action">
-            	<% khachhangbean isLogin = (khachhangbean)session.getAttribute("dn");
+            	<% 
+            	khachhangbean isLogin = (khachhangbean)session.getAttribute("dn");
             		if (isLogin == null) {%>            			
               	  <a href="dangnhapController" class="header-action__login btn btn--primary">
                     Đăng Nhập
@@ -50,8 +51,8 @@
     <div class="seperate"></div>
     	 <div class="cart">
 			<%
-				giohangbo listCard = null;
-				if (session.getAttribute("cart") == null) {
+				giohangbo listCard = (giohangbo)session.getAttribute("cart");
+				if (listCard == null || listCard.ds.size() == 0) {
 					
 			%>
 				<div class="container">
@@ -64,7 +65,7 @@
                		 <a href="shirtController" class="btn">Tiếp tục mua sắm</a>
             		</section>  
        			 </div>
-			<%} else { listCard = (giohangbo)session.getAttribute("cart"); %>
+			<%} else {  %>
           		<!-- Else -->
         <div class="container">
             <section class="cart-content">
@@ -137,8 +138,10 @@
                                 </p>
                             </div>
                         </td>
-                        <td class="card-table-body__col">
-                            Xóa sản phẩm
+                        <td class="cart-table-body__col">
+                            <a href="xoaController?masanpham=<%=x.getMasanpham()%>" class="btn-delete">
+                            	<img src="./assests/icons/trash.svg" alt="">
+                            </a>
                         </td>
                     </tr>
                     <%}%>                    

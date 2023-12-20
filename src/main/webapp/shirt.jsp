@@ -50,13 +50,27 @@
             <h1>Áo tại shop</h1>
             <div class="row gy-4 list-product">
             <%
+				ArrayList<Long> maYeuThich = (ArrayList<Long>)request.getAttribute("maYeuThich");
             	ArrayList<sanphambean> allShirt = (ArrayList<sanphambean>)request.getAttribute("allShirt");
             	for (sanphambean x : allShirt) {
             %>
                 	<div class="col-3">
                     	<section class="card">
                         <div class="card__icon">
-                            <img src="./assests/icons/heart.svg" alt="Heart Icon" class="icon-heart">
+                        <%
+                      	  if (isLogin != null) {
+                      			if(maYeuThich.contains(x.getMasanpham())){
+                      				%>
+                      				 <img data-user='<%=isLogin.getMakhachhang()%>' data-product='<%=x.getMasanpham()%>' data-login='true' data-product data-active='true' src="./assests/icons/heart-active.svg" alt="Heart Icon" class="icon-heart">
+                      				<% 
+                      			} else {
+                      				%>
+                      				<img data-user='<%=isLogin.getMakhachhang()%>' data-product='<%=x.getMasanpham()%>' data-login='true' src="./assests/icons/heart.svg" alt="Heart Icon" class="icon-heart">
+                      				<%
+                      			}
+                    		} else {%>
+                            <img data-login='false' src="./assests/icons/heart.svg" alt="Heart Icon" class="icon-heart">
+                            <%} %>
                         </div>
                         <img src="<%=x.getAnh()%>"
                             alt="Ảnh sản phẩm" class="card__image">
@@ -142,6 +156,7 @@
         </div>
     </footer>
     <script src="./script/load.js"></script>
+    <script src="./script/lovebtn.js"></script>
 </body>
 
 </html>

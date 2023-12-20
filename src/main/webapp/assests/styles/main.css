@@ -1293,6 +1293,7 @@ input {
   top: 26px;
   right: 20px;
   cursor: pointer;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .cart-table {
@@ -1306,7 +1307,7 @@ input {
   width: 100%;
 }
 .cart-table-top__col {
-  text-align: left;
+  text-align: center;
   padding: 26px 0;
   color: #fff;
   font-size: 1.8rem;
@@ -1324,6 +1325,7 @@ input {
   background: rgba(139, 133, 133, 0.6);
 }
 .cart-table-body__col {
+  text-align : center;
   padding: 24px 12px;
 }
 .cart-table-body-data__img {
@@ -1460,11 +1462,18 @@ input {
 }
 .product__list {
   padding: 0 34px 0 37px;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 .product__item {
   cursor: pointer;
 }
-.product__image {
+
+.product__image , .product__item a {
+  -webkit-user-drag: none
+}
+
+.product__image , .product__item a {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
@@ -1777,6 +1786,7 @@ input {
 
 .text-danger {
 	color : red;
+	margin : 12px 0;
 }
 
 .group_password {
@@ -1826,3 +1836,9 @@ input {
 .btn-user--index {
 	background : #000;
 }
+
+.btn-delete img {
+	width : 24px;
+}
+
+

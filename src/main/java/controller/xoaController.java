@@ -9,22 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
-import bean.khachhangbean;
-import bo.khachhangbo;
+import bo.giohangbo;
 
 /**
- * Servlet implementation class dangnhapController
+ * Servlet implementation class xoaController
  */
-@WebServlet("/dangnhapController")
-public class dangnhapController extends HttpServlet {
+@WebServlet("/xoaController")
+public class xoaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public dangnhapController() {
+    public xoaController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,28 +31,12 @@ public class dangnhapController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
 		try {
-			khachhangbo khbo = new khachhangbo();
-			String username = request.getParameter("username");
-			String password = request.getParameter("password");
-			if (username != null && password != null) {
-				khachhangbean isLoggin = khbo.login(username, password);
-				if (isLoggin != null) {
-					session.setAttribute("dn", isLoggin);
-					response.sendRedirect("homeController");
-					return;
-				} else {
-					request.setAttribute("errorLogin", true);
-				}
-			}
-			if (request.getParameter("isLogin") != null) {
-				request.setAttribute("isLogin", false);
-			}
-			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-			rd.forward(request, response);
+			HttpSession session = request.getSession();
+			giohangbo ghbo = (giohangbo)session.getAttribute("cart");
+			String masanpham = request.getParameter("masanpham");
+			ghbo.xoaSanPham(masanpham);
+			response.sendRedirect("cartController");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

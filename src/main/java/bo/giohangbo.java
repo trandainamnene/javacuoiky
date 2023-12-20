@@ -46,4 +46,15 @@ public class giohangbo {
 		}
 		return sum;
 	}
+	
+	public void xoaSanPham(String masanpham) {
+			for (giohangbean i : ds)
+			{
+				if (i.getMasanpham().equals(masanpham))
+				{
+					ds.remove(i);
+					return;
+				}
+			}
+	}
 }

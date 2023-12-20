@@ -58,6 +58,9 @@
                 <%if (request.getAttribute("errorLogin") != null && (boolean)request.getAttribute("errorLogin")){ %>
                 	<p class="text-danger">Tên đăng nhập hoặc mật khẩu không chính xác</p>
                 <%}%>
+                <%if (request.getAttribute("isLogin") != null) {%>
+              		<p class="text-danger">Bạn phải đăng nhập để tiếp tục</p>
+                <%}%>
                 <button class="btn--primary btn login__btn">Đăng Nhập</button>
             </form>
         </div>

@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="bean.KhachHangYeuThichSanPhambean"%>
 <%@page import="bean.khachhangbean"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -125,81 +127,36 @@
                         <h2 class="personal__heading">Danh sách yêu thích</h2>
                         <h3 class="personal__second-heading">Danh sách yêu thích của bạn</h3>
                         <div class="personal-right__list">
+                        <%
+                        	ArrayList<KhachHangYeuThichSanPhambean> khytsp = (ArrayList<KhachHangYeuThichSanPhambean>)request.getAttribute("khytsp");
+                            for (KhachHangYeuThichSanPhambean x : khytsp)  {
+                            %>
                             <div class="personal-right__item">
                                 <div class="row">
                                     <div class="col-3">
-                                        <img src="https://scontent.fhan14-4.fna.fbcdn.net/v/t39.30808-6/394631649_3606587106303929_6730748995243995553_n.jpg?stp=dst-jpg_p600x600&_nc_cat=109&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=PCFFU7ZJuJ4AX_5b2ox&_nc_ht=scontent.fhan14-4.fna&oh=00_AfCngDsb1ki-ty2B9Kzx2Swrf9DqoXiU2paGLSK2L7Sudw&oe=657AA320"
+                                        <img src="<%=x.getAnh()%>"
                                             alt="Hình ảnh sản phẩm" class="personal-right__item-image">
                                     </div>
                                     <div class="col-3">
                                         <h3 class="personal-right__item-heading">
-                                            Blue Flower Print Crop Top
+                                            <%=x.getTensanpham()%>
                                         </h3>
                                     </div>
                                     <div class="col-6">
                                         <div class="row">
                                             <div class="col-5">
-                                                <span class="personal-right__item-price">986.000VND</span>
+                                                <span class="personal-right__item-price"><%=x.getGia()%>VND</span>
                                             </div>
                                             <div class="col-7">
-                                                <button class="btn">
+                                                <a href="cartController?masanpham=<%=x.getMasanpham()%>&tensanpham=<%=x.getTensanpham()%>&anh=<%=x.getAnh()%>&soluongmua=<%=1%>&giatien=<%=x.getGia()%>" class="btn">
                                                     Thêm
-                                                </button>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="personal-right__item">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <img src="https://scontent.fhan14-4.fna.fbcdn.net/v/t39.30808-6/394631649_3606587106303929_6730748995243995553_n.jpg?stp=dst-jpg_p600x600&_nc_cat=109&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=PCFFU7ZJuJ4AX_5b2ox&_nc_ht=scontent.fhan14-4.fna&oh=00_AfCngDsb1ki-ty2B9Kzx2Swrf9DqoXiU2paGLSK2L7Sudw&oe=657AA320"
-                                            alt="Hình ảnh sản phẩm" class="personal-right__item-image">
-                                    </div>
-                                    <div class="col-3">
-                                        <h3 class="personal-right__item-heading">
-                                            Blue Flower Print Crop Top
-                                        </h3>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="row">
-                                            <div class="col-5">
-                                                <span class="personal-right__item-price">986.000VND</span>
-                                            </div>
-                                            <div class="col-7">
-                                                <button class="btn">
-                                                    Thêm
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="personal-right__item">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <img src="https://scontent.fhan14-4.fna.fbcdn.net/v/t39.30808-6/394631649_3606587106303929_6730748995243995553_n.jpg?stp=dst-jpg_p600x600&_nc_cat=109&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=PCFFU7ZJuJ4AX_5b2ox&_nc_ht=scontent.fhan14-4.fna&oh=00_AfCngDsb1ki-ty2B9Kzx2Swrf9DqoXiU2paGLSK2L7Sudw&oe=657AA320"
-                                            alt="Hình ảnh sản phẩm" class="personal-right__item-image">
-                                    </div>
-                                    <div class="col-3">
-                                        <h3 class="personal-right__item-heading">
-                                            Blue Flower Print Crop Top
-                                        </h3>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="row">
-                                            <div class="col-5">
-                                                <span class="personal-right__item-price">986.000VND</span>
-                                            </div>
-                                            <div class="col-7">
-                                                <button class="btn">
-                                                    Thêm
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <%}%>
                         </div>
                     </div>  
                     <div class="personal-right personal-right--active" data-tab="1">

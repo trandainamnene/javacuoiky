@@ -66,7 +66,9 @@
                         <article class="product__item">
                             <img src="<%= x.getAnh()%>"
                                 alt="" class="product__image">
-                            <h3 class="product__name"><%=x.getTensanpham()%></h3>
+                        	<a href="cartController?masanpham=<%=x.getMasanpham()%>&tensanpham=<%=x.getTensanpham()%>&anh=<%=x.getAnh()%>&soluongmua=<%=1%>&giatien=<%=x.getGia()%>">
+                            <h3 class="product__name"><%=x.getTensanpham()%></h3>                    	
+                        	</a>
                         </article>
                     </div>
                 <%}%>
@@ -101,7 +103,7 @@
             <div class="seperate"></div>
         </div>
     </footer>
-
+<script src="./script/slider.js"></script>
 </body>
 
 </html>

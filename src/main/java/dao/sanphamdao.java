@@ -11,7 +11,7 @@ public class sanphamdao {
 		ArrayList<sanphambean> ds = new ArrayList<sanphambean>();
 		KetNoi kn = new KetNoi();
 		kn.ketNoi();
-		String sql = "select top 4 *\r\n"
+		String sql = "select top 12 *\r\n"
 				+ "from SanPham\r\n"
 				+ "order by masanpham desc";
 		PreparedStatement cmd = kn.cn.prepareStatement(sql);

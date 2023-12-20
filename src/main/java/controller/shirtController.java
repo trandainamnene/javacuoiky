@@ -10,9 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import bean.khachhangbean;
 import bean.sanphambean;
 import bo.sanphambo;
+import bo.yeuthichbo;
 
 /**
  * Servlet implementation class shirtController
@@ -34,7 +37,17 @@ public class shirtController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			sanphambo spbo = new sanphambo();
+			HttpSession session = request.getSession();
+			if (session.getAttribute("dn") != null) {
+				long makhachhang = ((khachhangbean) session.getAttribute("dn")).getMakhachhang();
+				yeuthichbo ytbo = new yeuthichbo();
+				request.setAttribute("maYeuThich" , ytbo.getMaYeuThich(makhachhang));
+//				for (long x : ytbo.getMaYeuThich(makhachhang)) {
+//					System.out.println(x);
+//					System.out.println(ytbo.getMaYeuThich(makhachhang).contains(1));
+//				}
+			}
+ 			sanphambo spbo = new sanphambo();
 			ArrayList<sanphambean> allShirt = spbo.getAllShirt(0 , 12);
 			request.setAttribute("allShirt", allShirt);
 			RequestDispatcher rd = request.getRequestDispatcher("shirt.jsp");

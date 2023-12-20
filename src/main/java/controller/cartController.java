@@ -33,6 +33,10 @@ public class cartController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			HttpSession session = request.getSession();
+			if (session.getAttribute("dn") == null) {
+				response.sendRedirect("dangnhapController?isLogin=false");
+				return;
+			}
 			String tensanpham = request.getParameter("tensanpham");
 			String anh = request.getParameter("anh");
 			String soluongmua = request.getParameter("soluongmua");
