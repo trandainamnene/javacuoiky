@@ -10,8 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.giohangbean;
 import bean.khachhangbean;
 import bo.KhachHangYeuThichSanPhambo;
+import bo.chitiethoadonbo;
+import bo.giohangbo;
+import bo.hoadonbo;
 
 /**
  * Servlet implementation class usersettingController
@@ -34,9 +38,29 @@ public class usersettingController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			try {
 				HttpSession session = request.getSession();
+				if (session.getAttribute("dn") == null) {
+					response.sendRedirect("dangnhapController?isLogin=false");
+					return;
+				}
 				khachhangbean khbean =  (khachhangbean)session.getAttribute("dn");
 				KhachHangYeuThichSanPhambo khytspbo = new KhachHangYeuThichSanPhambo();
 				request.setAttribute("khytsp", khytspbo.getDS(khbean.getMakhachhang()));
+				// khi bấm đặt hàng
+				String maKHDatHang = request.getParameter("maKHDatHang");
+				if (maKHDatHang != null) {		
+					chitiethoadonbo cthdbo = new chitiethoadonbo();
+					hoadonbo hdbo = new hoadonbo();
+					hdbo.themHoadon(Long.parseLong(maKHDatHang));
+					giohangbo ghbo = (giohangbo)session.getAttribute("cart");
+					for (giohangbean x : ghbo.ds) {
+						cthdbo.themChiTietHoaDon(hdbo.getMaHoaDonMoiNhat(Long.parseLong(maKHDatHang)), Long.parseLong(x.getMasanpham()), x.getSoluongmua());
+					}
+					request.setAttribute("hoadon", new hoadonbo().getDsHoaDon(Long.parseLong(maKHDatHang)));
+					response.sendRedirect("usersettingController");
+					return;
+				} else {
+					request.setAttribute("hoadon", new hoadonbo().getDsHoaDon(khbean.getMakhachhang()));
+				}
 				RequestDispatcher rd = request.getRequestDispatcher("user_setting.jsp");
 				rd.forward(request, response);
 			} catch (Exception e) {

@@ -12,7 +12,6 @@
 </head>
 
 <body>
-    <div class="container">
         <header class="header">
             <img src="./assests/icons/LogoDaiNamClosthes.svg" alt="Logo" class="header__icon">
             <nav class="header-nav">
@@ -21,11 +20,8 @@
                     <li class="header-nav__item"><a href="shirtController">Sản Phẩm</a></li>
                 </ul>
             </nav>
-            <form action="" class="header-search">
-                <img src="assests/icons/loop.svg" alt="icon loop" class="header-search__icon">
-                <input type="text" class="header-search__box field" placeholder="Tìm kiếm">
-            </form>
             <div class="header-action">
+                <a href="searchController" class="btn-user"><img src="./assests/icons/loop.svg" alt="" class=""></a>
                 <a href="#" class="header-action__login btn">
                     Đăng Nhập
                 </a>
@@ -34,7 +30,6 @@
                 </a>
             </div>
         </header>
-    </div>
     <div class="seperate"></div>
     <div class="login-wrap">
         <div class="login">

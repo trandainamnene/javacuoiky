@@ -29,6 +29,7 @@ const changeValue = function(btn ,isIncrease) {
 	let getval = 0
 	const xhr = new XMLHttpRequest();
 	xhr.onload = function() {
+		console.log(this.responseText , "aisjdisjdi")
 		getval = this.responseText
 	}
 	xhr.open('POST' , 'soluongController' , false)
@@ -79,7 +80,7 @@ let calcAmountSum = function (row , btn) {
 	xhr.onload = function() {
 		console.log(JSON.parse(this.responseText))
 		getPrice.innerText = JSON.parse(this.responseText).tongTienCTHoaDon;
-		amountPrice.innerText = JSON.parse(this.responseText).tongTienHoaDon;
+		amountPrice.innerText = JSON.parse(this.responseText).tongTienHoaDon + ' VND';
 	}
 	xhr.open('POST' , 'amountPrice' , false)
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

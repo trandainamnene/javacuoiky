@@ -12,6 +12,7 @@ const callServlet = function () {
         getProduct.innerHTML += this.responseText
         //console.log(this.responseText)
         let btnLove = getProduct.querySelectorAll('.card__icon')
+        console.log(btnLove)
 		btnLove.forEach((e) => {
 		e.addEventListener('click' , callAJAXLove)
 })
@@ -29,9 +30,7 @@ function callAJAXLove() {
 	if (icon.dataset.login && icon.dataset.active) {
 		callAJAX('deleteYeuThichController' , icon , icon.dataset.user , icon.dataset.product , true)
 		
-	}
-	
-	if (icon.dataset.login && !icon.dataset.active) {
+	} else if (icon.dataset.login && !icon.dataset.active) {
 		callAJAX('addYeuThichController' , icon , icon.dataset.user , icon.dataset.product , false)
 	}
 }
@@ -41,7 +40,7 @@ function callAJAX(url , icon , makhachhang , masanpham , isDelete) {
     xhr.onload = function () {
 		if (isDelete) {
 			icon.src = iconURL.nonActive
-			icon.dataset.active = null
+			icon.removeAttribute("data-active")
 			console.log('da xoac')
 		} else {
 			icon.src = iconURL.active

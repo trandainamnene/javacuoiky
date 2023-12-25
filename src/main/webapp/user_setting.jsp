@@ -1,3 +1,4 @@
+<%@page import="bean.hoadonbean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="bean.KhachHangYeuThichSanPhambean"%>
 <%@page import="bean.khachhangbean"%>
@@ -16,7 +17,6 @@
 </head>
 
 <body>
-    <div class="container">
         <header class="header">
             <img src="./assests/icons/LogoDaiNamClosthes.svg" alt="Logo" class="header__icon">
             <nav class="header-nav">
@@ -25,13 +25,10 @@
                     <li class="header-nav__item"><a href="shirtController">Sản Phẩm</a></li>
                 </ul>
             </nav>
-            <form action="" class="header-search">
-                <img src="assests/icons/loop.svg" alt="icon loop" class="header-search__icon">
-                <input type="text" class="header-search__box field" placeholder="Tìm kiếm">
-            </form>
             <div class="header-action">
             	<% khachhangbean isLogin = (khachhangbean)session.getAttribute("dn");
             		if (isLogin == null) {%>            			
+              	  <a href="searchController" class="btn-user"><img src="./assests/icons/loop.svg" alt="" class=""></a>
               	  <a href="dangnhapController" class="header-action__login btn btn--primary">
                     Đăng Nhập
              	   </a>
@@ -39,12 +36,12 @@
                	     Đăng Ký
               	  </a>
             	<%}%><%else {%>
+               	 <a href="searchController" class="btn-user"><img src="./assests/icons/loop.svg" alt="" class=""></a>
                	 <a href="usersettingController" class="btn-user btn-user--index"><img src="./assests/icons/user.svg" alt="" class=""></a>
                	 <a href="cartController" class="btn-user"><img src="./assests/icons/cart.svg" alt="" class=""></a>
             	<%} %>
             </div>
         </header>
-    </div>
     <div class="container">
         <div class="personal">
             <div class="row">
@@ -52,7 +49,7 @@
                     <div class="personal-left">
                         <div class="heading">
                             <span></span>
-                            <h1 class="heading__content personal__heading">Chào bác học Duy Dương</h1>
+                            <h1 class="heading__content personal__heading"><%=isLogin.getHo() + " " + isLogin.getTen()%></h1>
                         </div>
                         <p class="personal-left__desc">
                             Chào mừng đến với tài khoản của bạn
@@ -127,8 +124,18 @@
                         <h2 class="personal__heading">Danh sách yêu thích</h2>
                         <h3 class="personal__second-heading">Danh sách yêu thích của bạn</h3>
                         <div class="personal-right__list">
-                        <%
-                        	ArrayList<KhachHangYeuThichSanPhambean> khytsp = (ArrayList<KhachHangYeuThichSanPhambean>)request.getAttribute("khytsp");
+                        <%ArrayList<KhachHangYeuThichSanPhambean> khytsp = (ArrayList<KhachHangYeuThichSanPhambean>)request.getAttribute("khytsp");
+                        	if (khytsp.size() == 0){%>
+                        	<div class="personal-right__item">
+                        		<div class="personal-right__item-empty">
+ 									<img alt="" src="./assests/images/empty-wishlist.png">	
+ 								 	<h3 class="personal__second-heading">Danh sách yêu thích của bạn đang trống</h3>
+ 								 	<a href="shirtController" class="header-action__login btn btn--primary">
+                			  			  Tiếp tục mua sắm
+             	   					</a>	
+ 								 </div>                       	
+                        	</div>
+                        	<%} else {
                             for (KhachHangYeuThichSanPhambean x : khytsp)  {
                             %>
                             <div class="personal-right__item">
@@ -157,15 +164,23 @@
                                 </div>
                             </div>
                             <%}%>
+                            <%}%>
                         </div>
                     </div>  
                     <div class="personal-right personal-right--active" data-tab="1">
                         <h2 class="personal__heading">Đơn hàng của bạn</h2>
                         <h3 class="personal__second-heading">Chi tiết đơn hàng</h3>
                         <ul class="personal-right-oder-list">
+                        	<%
+                        		ArrayList<hoadonbean> hoadons = (ArrayList<hoadonbean>)request.getAttribute("hoadon");
+                        		if (hoadons != null) {
+                        		int i = 0;
+                        		for (hoadonbean x : hoadons) {
+                        			i++;
+                        	%>
                             <li class="personal-right-oder-list__item">
                                 <h3 class="personal-right-oder-list-item__heading">
-                                    Đơn hàng số : #123456789
+                                    Đơn hàng số : #<%=i%>
                                 </h3>
                                 <div class="personal-right-oder-list-item__row">
                                     <div>
@@ -173,7 +188,7 @@
                                             Ngày đặt:
                                         </b>
                                         <b class="personal-right-oder-list-item__light">
-                                            06/09/2023
+                                            <%=x.getNgaydathang()%>
                                         </b>
                                     </div>
 
@@ -181,113 +196,22 @@
                                         <b class="personal-right-oder-list-item__bold">
                                             Trạng thái:
                                         </b>
-                                        <b class="personal-right-oder-list-item__light">
-                                            Chưa thanh toán
+                                            <%if (x.getDamua() == 0){%>
+                                        <b class="personal-right-oder-list-item__light text-danger">
+                                            	Chưa thanh toán
+                                            	
                                         </b>
+                                            <%}else{%>
+	                                     <b class="personal-right-oder-list-item__light text-success">
+                                            	Đã thanh toán
+                                         </b>
+                                            <%}%>
                                     </div>
-                                    <a href="" class="btn btn--primary">Chi Tiết</a>
+                                    <a href="detailproductController?sttdt=<%=i%>&mahoadon=<%=x.getMahoadon()%>" class="btn btn--primary">Chi Tiết</a>
                                 </div>
                             </li>
-                            <li class="personal-right-oder-list__item">
-                                <h3 class="personal-right-oder-list-item__heading">
-                                    Đơn hàng số : #123456789
-                                </h3>
-                                <div class="personal-right-oder-list-item__row">
-                                    <div>
-                                        <b class="personal-right-oder-list-item__bold">
-                                            Ngày đặt:
-                                        </b>
-                                        <b class="personal-right-oder-list-item__light">
-                                            06/09/2023
-                                        </b>
-                                    </div>
-
-                                    <div>
-                                        <b class="personal-right-oder-list-item__bold">
-                                            Trạng thái:
-                                        </b>
-                                        <b class="personal-right-oder-list-item__light">
-                                            Chưa thanh toán
-                                        </b>
-                                    </div>
-                                    <a href="" class="btn btn--primary">Chi Tiết</a>
-                                </div>
-                            </li>
-                            <li class="personal-right-oder-list__item">
-                                <h3 class="personal-right-oder-list-item__heading">
-                                    Đơn hàng số : #123456789
-                                </h3>
-                                <div class="personal-right-oder-list-item__row">
-                                    <div>
-                                        <b class="personal-right-oder-list-item__bold">
-                                            Ngày đặt:
-                                        </b>
-                                        <b class="personal-right-oder-list-item__light">
-                                            06/09/2023
-                                        </b>
-                                    </div>
-
-                                    <div>
-                                        <b class="personal-right-oder-list-item__bold">
-                                            Trạng thái:
-                                        </b>
-                                        <b class="personal-right-oder-list-item__light">
-                                            Chưa thanh toán
-                                        </b>
-                                    </div>
-                                    <a href="" class="btn btn--primary">Chi Tiết</a>
-                                </div>
-                            </li>
-                            <li class="personal-right-oder-list__item">
-                                <h3 class="personal-right-oder-list-item__heading">
-                                    Đơn hàng số : #123456789
-                                </h3>
-                                <div class="personal-right-oder-list-item__row">
-                                    <div>
-                                        <b class="personal-right-oder-list-item__bold">
-                                            Ngày đặt:
-                                        </b>
-                                        <b class="personal-right-oder-list-item__light">
-                                            06/09/2023
-                                        </b>
-                                    </div>
-
-                                    <div>
-                                        <b class="personal-right-oder-list-item__bold">
-                                            Trạng thái:
-                                        </b>
-                                        <b class="personal-right-oder-list-item__light">
-                                            Chưa thanh toán
-                                        </b>
-                                    </div>
-                                    <a href="" class="btn btn--primary">Chi Tiết</a>
-                                </div>
-                            </li>
-                            <li class="personal-right-oder-list__item">
-                                <h3 class="personal-right-oder-list-item__heading">
-                                    Đơn hàng số : #123456789
-                                </h3>
-                                <div class="personal-right-oder-list-item__row">
-                                    <div>
-                                        <b class="personal-right-oder-list-item__bold">
-                                            Ngày đặt:
-                                        </b>
-                                        <b class="personal-right-oder-list-item__light">
-                                            06/09/2023
-                                        </b>
-                                    </div>
-
-                                    <div>
-                                        <b class="personal-right-oder-list-item__bold">
-                                            Trạng thái:
-                                        </b>
-                                        <b class="personal-right-oder-list-item__light">
-                                            Chưa thanh toán
-                                        </b>
-                                    </div>
-                                    <a href="" class="btn btn--primary">Chi Tiết</a>
-                                </div>
-                            </li>
+                            <%}%>
+                            <%}%>
                         </ul>
                     </div>
                 </div>

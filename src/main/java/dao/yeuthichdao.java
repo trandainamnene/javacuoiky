@@ -45,4 +45,15 @@ public class yeuthichdao {
 		cmd.close();
 		kn.cn.close();
 	}
+	
+	public void deleteYeuThich(long msanpham) throws Exception {
+		 KetNoi kn = new KetNoi();
+		 kn.ketNoi();
+		 String sql = "delete from YeuThich where masanpham =?";
+		 PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		 cmd.setLong(1, msanpham);
+		 cmd.executeUpdate();
+		 cmd.close();
+		 kn.cn.close();
+	}
 }

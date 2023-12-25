@@ -17,4 +17,8 @@ public class yeuthichbo {
 	public void deleteYeuThich(long makhachhang , long masanpham) throws Exception {
 		ytdao.xoaYeuThichControlelr(makhachhang, masanpham);
 	}
+	
+	public void deleteYeuThichAdmin(long masanpham) throws Exception {
+		ytdao.deleteYeuThich(masanpham);
+	}
 }

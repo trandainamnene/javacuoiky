@@ -77,10 +77,9 @@ public class khachhangdao {
 			String ten = rs.getString("ten");
 			String username1 = rs.getString("username");
 			String password1 = rs.getString("password");
-			String mahoadon = rs.getString("mahoadon");
 			String email = rs.getString("email");
 			String sdt = rs.getString("sdt");
-			khbean = new khachhangbean(makhachhang, ho, ten, username1, password1, mahoadon, email, sdt);
+			khbean = new khachhangbean(makhachhang, ho, ten, username1, password1, email, sdt);
 			break;
 		}
 		cmd.close();

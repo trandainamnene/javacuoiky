@@ -16,7 +16,6 @@
 </head>
 
 <body>
-    <div class="container">
         <header class="header">
             <img src="./assests/icons/LogoDaiNamClosthes.svg" alt="Logo" class="header__icon">
             <nav class="header-nav">
@@ -25,13 +24,10 @@
                     <li class="header-nav__item"><a href="shirtController">Sản Phẩm</a></li>
                 </ul>
             </nav>
-            <form action="" class="header-search">
-                <img src="assests/icons/loop.svg" alt="icon loop" class="header-search__icon">
-                <input type="text" class="header-search__box field" placeholder="Tìm kiếm">
-            </form>
             <div class="header-action">
             	<% khachhangbean isLogin = (khachhangbean)session.getAttribute("dn");
             		if (isLogin == null) {%>            			
+               	 <a href="searchController" class="btn-user"><img src="./assests/icons/loop.svg" alt="" class=""></a>
               	  <a href="dangnhapController" class="header-action__login btn btn--primary">
                     Đăng Nhập
              	   </a>
@@ -39,12 +35,12 @@
                	     Đăng Ký
               	  </a>
             	<%}%><%else {%>
+            	 <a href="searchController" class="btn-user"><img src="./assests/icons/loop.svg" alt="" class=""></a>
                	 <a href="usersettingController" class="btn-user"><img src="./assests/icons/user.svg" alt="" class=""></a>
                	 <a href="cartController" class="btn-user"><img src="./assests/icons/cart.svg" alt="" class=""></a>
             	<%} %>
             </div>
         </header>
-    </div>
     <div class="seperate"></div>
     <div class="hero">
         <img src="./assests/images/banner.png" alt="Banner DNAM CLothes" class="hero__img"> 
@@ -56,13 +52,12 @@
                 <h2 class="heading__content">Các mẫu áo mới nhất</h2>
             </section>
             <div class="product__wrap">
-                <img src="./assests/icons/left-arrow.svg" alt="" class="product__icon-left">
                 <div class="product__list row">
                 <%
                 	ArrayList<sanphambean> newProduct = (ArrayList<sanphambean>)request.getAttribute("newProduct"); 
                 	for (sanphambean x : newProduct) {
                 %>
-                    <div class="col-3">
+                    <div class="col-lg-3">
                         <article class="product__item">
                             <img src="<%= x.getAnh()%>"
                                 alt="" class="product__image">
@@ -73,7 +68,6 @@
                     </div>
                 <%}%>
                 </div>
-                <img src="./assests/icons/right-arrow.svg" alt="" class="product__icon-right">
             </div>
         </div>
     </div>

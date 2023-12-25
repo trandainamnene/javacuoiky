@@ -1111,6 +1111,12 @@ input {
   align-items: center;
   justify-content: space-between;
   font-size: 2.2rem;
+  position : fixed;
+  background : white;
+  z-index : 1;
+  left : 0;
+  right : 0;
+  padding : 0 30;
 }
 .header__icon {
   width: 100px;
@@ -1146,6 +1152,7 @@ input {
 .header-action {
   display: flex;
   column-gap: 29px;
+  align-items : center;
 }
 
 .footer {
@@ -1270,6 +1277,7 @@ input {
   font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 5px;
+  padding-right : 12px;
 }
 .card__sex {
   color: #807d7e;
@@ -1427,6 +1435,9 @@ input {
 }
 .form-user--not-editable .form-user__field:read-only {
   color: rgba(41, 37, 37, 0.4);
+}
+.hero {
+	margin-top : 100px;
 }
 .hero .hero__img {
   width: 100%;
@@ -1702,7 +1713,7 @@ input {
 }
 
 .personal {
-  padding: 50px 0;
+  padding: 100px 0;
 }
 .personal .heading {
   margin-bottom: 0;
@@ -1785,8 +1796,12 @@ input {
 }
 
 .text-danger {
-	color : red;
+	color : red !important;
 	margin : 12px 0;
+}
+
+.text-success {
+	color : green !important;
 }
 
 .group_password {
@@ -1841,4 +1856,115 @@ input {
 	width : 24px;
 }
 
+.personal-right__item-empty {
+	display : flex;
+	justify-content : center;
+	align-items : center;
+	flex-direction : column;
+	row-gap : 20px;
+}
 
+
+.search-form {
+  padding-top: 40px;
+  display: flex;
+  column-gap: 10px;
+}
+
+.search__desc {
+  margin-top: 40px;
+  color : #6f6e6e;
+  text-align: center;
+}
+
+.search-form__btn {
+  border: none;
+  border-radius: 8px;
+  padding : 0px 12px;
+  cursor: pointer;
+}
+
+.search-form__btn:hover {
+  background : var(--primary-color);
+}
+
+.search-form__btn:hover img {
+  filter: brightness(0) saturate(100%) invert(99%) sepia(0%) saturate(3374%) hue-rotate(203deg) brightness(116%) contrast(100%);
+}
+
+.search-form {
+  padding: 60px 0;
+  display: flex;
+  column-gap: 10px;
+}
+
+.search__desc {
+  margin: 40px 0;
+  color : #6f6e6e;
+  text-align: center;
+}
+
+.search-form__btn {
+  border: none;
+  border-radius: 8px;
+  padding : 0px 12px;
+  cursor: pointer;
+}
+
+.search-form__btn:hover {
+  background : var(--primary-color);
+}
+
+.search-form__btn:hover img {
+  filter: brightness(0) saturate(100%) invert(99%) sepia(0%) saturate(3374%) hue-rotate(203deg) brightness(116%) contrast(100%);
+}
+
+.search-form__input {
+  width: 100%;
+  margin-right: 0;
+}
+
+.search {
+	padding : 40px 0;
+}
+
+.detail-product {
+  padding: 40px 0;
+}
+
+.detail-product__heading {
+  color: #3C4242;
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: 0.56px;
+  padding : 20px 0;
+}
+
+.detail-product-detail__desc {
+  color: #807D7E;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.detail-product-detail__strong {
+  color: #3C4242;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.detail-product-detail {
+  background-color: #F6F6F6;
+  display: flex;
+  justify-content: space-between;
+  padding: 27px 47px;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+/*Thiết bị nhỏ*/
+@media (max-width: 575.98px) { 
+	.product__name {
+		font-size : 1rem;
+	}
+	
+}

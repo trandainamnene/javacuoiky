@@ -6,7 +6,6 @@ public class sanphambean {
 	private int soluong;
 	private String anh;
 	private long gia;
-	private long maloai;
 	
 	public sanphambean(long masanpham, String tensanpham, int soluong, String anh, long gia) {
 		super();

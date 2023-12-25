@@ -15,7 +15,6 @@
 </head>
 
 <body>
-    <div class="container">
         <header class="header">
             <img src="./assests/icons/LogoDaiNamClosthes.svg" alt="Logo" class="header__icon">
             <nav class="header-nav">
@@ -24,13 +23,10 @@
                     <li class="header-nav__item"><a href="shirtController">Sản Phẩm</a></li>
                 </ul>
             </nav>
-            <form action="" class="header-search">
-                <img src="assests/icons/loop.svg" alt="icon loop" class="header-search__icon">
-                <input type="text" class="header-search__box field" placeholder="Tìm kiếm">
-            </form>
             <div class="header-action">
             	<% khachhangbean isLogin = (khachhangbean)session.getAttribute("dn");
             		if (isLogin == null) {%>            			
+               	 <a href="searchController" class="btn-user"><img src="./assests/icons/loop.svg" alt="" class=""></a>
               	  <a href="dangnhapController" class="header-action__login btn btn--primary">
                     Đăng Nhập
              	   </a>
@@ -38,12 +34,12 @@
                	     Đăng Ký
               	  </a>
             	<%}%><%else {%>
+            	 <a href="searchController" class="btn-user"><img src="./assests/icons/loop.svg" alt="" class=""></a>
                	 <a href="usersettingController" class="btn-user"><img src="./assests/icons/user.svg" alt="" class=""></a>
                	 <a href="cartController" class="btn-user"><img src="./assests/icons/cart.svg" alt="" class=""></a>
             	<%} %>
             </div>
         </header>
-        </div>
     <div class="seperate"></div>
     <section class="product">
         <div class="container">
@@ -54,14 +50,14 @@
             	ArrayList<sanphambean> allShirt = (ArrayList<sanphambean>)request.getAttribute("allShirt");
             	for (sanphambean x : allShirt) {
             %>
-                	<div class="col-3">
+                	<div class="col-12 col-md-4 col-lg-3">
                     	<section class="card">
                         <div class="card__icon">
                         <%
                       	  if (isLogin != null) {
                       			if(maYeuThich.contains(x.getMasanpham())){
                       				%>
-                      				 <img data-user='<%=isLogin.getMakhachhang()%>' data-product='<%=x.getMasanpham()%>' data-login='true' data-product data-active='true' src="./assests/icons/heart-active.svg" alt="Heart Icon" class="icon-heart">
+                      				 <img data-user='<%=isLogin.getMakhachhang()%>' data-product='<%=x.getMasanpham()%>' data-login='true' data-active='true' src="./assests/icons/heart-active.svg" alt="Heart Icon" class="icon-heart">
                       				<% 
                       			} else {
                       				%>
@@ -69,7 +65,9 @@
                       				<%
                       			}
                     		} else {%>
-                            <img data-login='false' src="./assests/icons/heart.svg" alt="Heart Icon" class="icon-heart">
+                    		<a href="dangnhapController?isLogin=false"> 
+	                            <img data-login='false' src="./assests/icons/heart.svg" alt="Heart Icon" class="icon-heart">
+                    		</a>
                             <%} %>
                         </div>
                         <img src="<%=x.getAnh()%>"
@@ -98,34 +96,25 @@
                 <h2 class="heading__content">Clothing Online in Viet Nam</h2>
             </section>
             <section class="clodes__content">
-                <h3 class="clodes__heading">Reexplore Man Clothing Collection Online at Euphoria</h3>
-                <p class="clodes__desc">Man's Clothing – Are you searching for the best website to buy Clothing for
-                    Women online in India?
-                    Well, your search for the coolest and most stylish womens clothing ends here. From trendy Casual
-                    Womens
-                    Wear Online shopping to premium quality cotton women's apparel, Euphoria has closet of Women
-                    Collection
-                    covered with the latest and best designs of Women's Clothing Online.
+                <h3 class="clodes__heading">Shop áo quần Đại Nam</h3>
+                <p class="clodes__desc">Đây là nội dung
                     <br>
                     <br>
-                    Our collection of clothes for women will make you the trendsetter with an iconic resemblance of
-                    choice
-                    in Womens Wear.
+                  	 Đây là nội dung
+                    Đây là nội dung
+                    Đây là nội dung
                 </p>
             </section>
             <section class="clodes__content">
-                <h3 class="clodes__heading">One-Stop Destination to Shop Every Clothing for Women: Euphoria</h3>
+                <h3 class="clodes__heading">Đây là nội dung</h3>
                 <p class="clodes__desc">
-                    Today, Clothing for Women is gaining more popularity above all. This is because gone are the days
-                    when women were used to carrying uncomfortable fashion. Today, a lady looks prettier when she is in
-                    Casual Womens Wear which is a comfortable outfit. Concerning this, Euphoria has a big fat range of
-                    Stylish Women's Clothing that would make her the winner wherever she goes.
+                    Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung
+                     Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung
                     <br>
                     <br>
-                    Our collection of clothes for women will make you the trendsetter with an iconic resemblance of
-                    choice in Womens Wear. It is quite evident to say that there are very few Womens Clothing online
-                    stores where you can buy Western Wear for Women comprising the premium material and elegant design
-                    that you are always seeking for. Basically,
+                     Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung
+                     Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung Đây là nội dung
+                    <br>
                 </p>
             </section>
         </div>
@@ -134,17 +123,17 @@
         <div class="container">
             <section class="footer-info">
                 <h2 class="footer__heading">
-                    Location
+                    Thông tin liên hệ : 
                 </h2>
                 <ul class="footer__list">
                     <li class="footer__item">
-                        <a href="">support@euphoria.in</a>
+                        <a href="">dainamene123@gmail.com</a>
                     </li>
                     <li class="footer__item">
-                        <a href="">support@euphoria.in</a>
+                        <a href="">(+84) 92 400 7246</a>
                     </li>
                     <li class="footer__item">
-                        <a href="">support@euphoria.in</a>
+                        <a href="">23ABC Hùng Vương . Thành Phố Huế</a>
                     </li>
                 </ul>
             </section>

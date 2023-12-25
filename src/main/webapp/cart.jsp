@@ -15,10 +15,6 @@
 	<title>Giỏ Hàng</title>
 </head>
 <body>
-	<style>
-	
-	</style>
-	<div class="container">
         <header class="header">
             <img src="./assests/icons/LogoDaiNamClosthes.svg" alt="Logo" class="header__icon">
             <nav class="header-nav">
@@ -27,10 +23,6 @@
                     <li class="header-nav__item"><a href="shirtController">Sản Phẩm</a></li>
                 </ul>
             </nav>
-            <form action="" class="header-search">
-                <img src="assests/icons/loop.svg" alt="icon loop" class="header-search__icon">
-                <input type="text" class="header-search__box field" placeholder="Tìm kiếm">
-            </form>
             <div class="header-action">
             	<% 
             	khachhangbean isLogin = (khachhangbean)session.getAttribute("dn");
@@ -42,12 +34,12 @@
                	     Đăng Ký
               	  </a>
             	<%}%><%else {%>
+               	 <a href="searchController" class="btn-user"><img src="./assests/icons/loop.svg" alt="" class=""></a>
                	 <a href="usersettingController" class="btn-user"><img src="./assests/icons/user.svg" alt="" class=""></a>
                	 <a href="cartController" class="btn-user btn-user--index"><img src="./assests/icons/cart.svg" alt="" class=""></a>
             	<%} %>
             </div>
         </header>
-    </div>
     <div class="seperate"></div>
     	 <div class="cart">
 			<%
@@ -155,7 +147,7 @@
                     	out.print(ghbo.tongTienHoaDonAJAX());
                     }%> VND</p>
                 </div>
-                <a href="" class="btn">
+                <a href="usersettingController?maKHDatHang=<%=isLogin.getMakhachhang()%>" class="btn">
                     Đặt Hàng
                 </a>
         	<%}%>

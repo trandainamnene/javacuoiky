@@ -6,10 +6,9 @@ public class khachhangbean {
 	private String ten;
 	private String username;
 	private String password;
-	private String mahoadon;
 	private String email;
 	private String sdt;
-	public khachhangbean(long makhachhang, String ho, String ten, String username, String password, String mahoadon,
+	public khachhangbean(long makhachhang, String ho, String ten, String username, String password,
 			String email, String sdt) {
 		super();
 		this.makhachhang = makhachhang;
@@ -17,7 +16,6 @@ public class khachhangbean {
 		this.ten = ten;
 		this.username = username;
 		this.password = password;
-		this.mahoadon = mahoadon;
 		this.email = email;
 		this.sdt = sdt;
 	}
@@ -50,12 +48,6 @@ public class khachhangbean {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public String getMahoadon() {
-		return mahoadon;
-	}
-	public void setMahoadon(String mahoadon) {
-		this.mahoadon = mahoadon;
 	}
 	public String getEmail() {
 		return email;
