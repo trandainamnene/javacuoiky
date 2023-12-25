@@ -36,4 +36,8 @@ public class sanphambo {
 	public void deleteProduct(long masanpham) throws Exception {
 		spdao.deleteProduct(masanpham);
 	}
+	
+	public void themSanPham(String tensanpham, int soluong, String anh, long gia) throws Exception {
+		spdao.insertSanPham(tensanpham, soluong, anh, gia);
+	}
 }

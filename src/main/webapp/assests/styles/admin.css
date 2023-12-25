@@ -235,3 +235,7 @@ nav a.active {
 .form-update__group {
 	flex-grow : 1;
 }
+
+.text--normal {
+	color : blue;
+}

@@ -116,4 +116,18 @@ public class sanphamdao {
 		cmd.close();
 		kn.cn.close();
 	}
+	
+	public void insertSanPham(String tensanpham, int soluong, String anh, long gia) throws Exception {
+		KetNoi kn = new KetNoi();
+		kn.ketNoi();
+		String sql = "insert into SanPham(tensanpham , soluong , anh , gia) values(? , ? ,? ,?)";
+		PreparedStatement cmd = kn.cn.prepareStatement(sql);
+		cmd.setString(1, tensanpham);
+		cmd.setInt(2, soluong);
+		cmd.setString(3, anh);
+		cmd.setLong(4, gia);
+		cmd.executeUpdate();
+		cmd.close();
+		kn.cn.close();
+	}
 }

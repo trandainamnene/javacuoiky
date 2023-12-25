@@ -32,10 +32,21 @@ public class adminThemSanPhamController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			request.setCharacterEncoding("utf-8");
+			response.setCharacterEncoding("utf-8");
 			HttpSession session = request.getSession();	
 			if (session.getAttribute("dnAdmin") == null) {
 				response.sendRedirect("adminDangNhapController?isLogin=true");
 				return;
+			}
+			String tensanpham = request.getParameter("tensanpham");
+			String slsanpham = request.getParameter("slsanpham");
+			String giasp = request.getParameter("giasp");
+			String anhsp = request.getParameter("anhsp");
+			if (tensanpham != null) {
+				sanphambo spbo = new sanphambo();
+				spbo.themSanPham(tensanpham, Integer.parseInt(slsanpham), anhsp, Long.parseLong(giasp));
+				request.setAttribute("dathem", true);
 			}
 			RequestDispatcher rd = request.getRequestDispatcher("adminThemSanPham.jsp");
 			rd.forward(request, response);

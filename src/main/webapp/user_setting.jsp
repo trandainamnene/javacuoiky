@@ -45,7 +45,7 @@
     <div class="container">
         <div class="personal">
             <div class="row">
-                <div class="col-4">
+                <div class="col-12 col-lg-4">
                     <div class="personal-left">
                         <div class="heading">
                             <span></span>
@@ -82,7 +82,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-12 col-lg-8">
                     <div class="personal-right" data-tab="3">
                         <h2 class="personal__heading">Thông tin của bạn</h2>
                         <h3 class="personal__second-heading">Chi tiết liên hệ</h3>
@@ -115,9 +115,6 @@
                                 <input id="form-user__pass" class="form-user__field" type="password" name="password"
                                     value="<%=khbean.getPassword()%>" readonly>
                             </div>
-                            <button class="btn">
-                                Chỉnh sửa thông tinh của bạn
-                            </button>
                         </form>
                     </div>
                      <div class="personal-right" data-tab="2">
@@ -140,16 +137,16 @@
                             %>
                             <div class="personal-right__item">
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-12 col-md-3">
                                         <img src="<%=x.getAnh()%>"
                                             alt="Hình ảnh sản phẩm" class="personal-right__item-image">
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-12 col-md-3">
                                         <h3 class="personal-right__item-heading">
                                             <%=x.getTensanpham()%>
                                         </h3>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6">
                                         <div class="row">
                                             <div class="col-5">
                                                 <span class="personal-right__item-price"><%=x.getGia()%>VND</span>

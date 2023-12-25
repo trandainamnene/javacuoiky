@@ -111,15 +111,18 @@ margin-left: 28%;
 </head>
 <body>
 <div class="main-block">
-	<form action="/">
+	<form action="adminThemSanPhamController" method="POST">
 		<h1>Thêm sản phẩm</h1>
 		<div class="info">
-			<input class="fname" type="text" name="name" placeholder="Tên sản phẩm">
-			<input type="text" name="name" placeholder="Số lượng">
-			<input type="text" name="name" placeholder="Giá">
-			<input type="text" name="name" placeholder="URL ảnh">
+			<input class="fname" type="text" name="tensanpham" placeholder="Tên sản phẩm" required="required">
+			<input type="text" name="slsanpham" placeholder="Số lượng" required="required">
+			<input type="number" min="0" name="giasp" placeholder="Giá" required="required">
+			<input type="text" name="anhsp" placeholder="URL ảnh" required="required">
 		</div>
-		<button type="submit" href="/">Thêm sản phẩm</button>
+		<button type="submit">Thêm sản phẩm</button>
+			<%if (request.getAttribute("dathem") != null && ((boolean)request.getAttribute("dathem")) == true){%>
+				<p class="text--normal">Đã thêm mới sản phẩm</p>
+			<%}%>
 	</form>
 </div>
 </body>
